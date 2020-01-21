@@ -1032,9 +1032,7 @@ stream {
             set $proxy_upstream_name {{ buildUpstreamName $location | quote }};
             set $proxy_host          $proxy_upstream_name;
             set $pass_access_scheme  $scheme;
-            set $pass_server_port    $server_port;
             set $best_http_host      $http_host;
-            set $pass_port           $pass_server_port;
 
             set $proxy_alternative_upstream_name "";
 
@@ -1152,7 +1150,7 @@ stream {
             {{ $proxySetHeader }} X-Forwarded-For        $remote_addr;
             {{ end }}
             {{ $proxySetHeader }} X-Forwarded-Host       $best_http_host;
-            {{ $proxySetHeader }} X-Forwarded-Port       $pass_port;
+            {{ $proxySetHeader }} X-Forwarded-Port       $proxy_protocol_server_port;
             {{ $proxySetHeader }} X-Forwarded-Proto      $pass_access_scheme;
             {{ if $all.Cfg.ProxyAddOriginalURIHeader }}
             {{ $proxySetHeader }} X-Original-URI         $request_uri;
