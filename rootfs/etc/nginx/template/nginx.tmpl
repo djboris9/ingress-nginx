@@ -1032,6 +1032,7 @@ stream {
             set $proxy_upstream_name {{ buildUpstreamName $location | quote }};
             set $proxy_host          $proxy_upstream_name;
             set $pass_access_scheme  $scheme;
+            set $pass_server_port    $server_port;
             set $best_http_host      $http_host;
 
             set $proxy_alternative_upstream_name "";
