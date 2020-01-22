@@ -1034,9 +1034,9 @@ stream {
             set $pass_access_scheme  $scheme;
             
             {{ if $all.Cfg.UseProxyProtocol }}
-            set $pass_server_port    $server_port;
-            {{ else }}
             set $pass_server_port    $proxy_protocol_server_port;
+            {{ else }}
+            set $pass_server_port    $server_port;
             {{ end }}
             
             set $best_http_host      $http_host;
